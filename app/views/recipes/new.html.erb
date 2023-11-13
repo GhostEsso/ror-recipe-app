@@ -1,1 +1,20 @@
-<h1>Here goes a form for creating a new Food record</h1>
+<h1>Create a new Recipe</h1>
+
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: name %>
+<% end -%>
+<%= form_with model: [@recipe], data: { turbo: false }, local: true do |f| %>
+  <div>
+    <%= f.label :name %><br>
+    <%= f.text_field :name, :required => true %><br>
+    <%= f.label :preparation_time %><br>
+    <%= f.number_field :preparation_time, :required => true, step: 0.1 %><br>
+    <%= f.label :cooking_time %><br>
+    <%= f.number_field :cooking_time, :required => true, step: 0.1 %><br>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %><br>
+    <%= f.label :public %><br>
+    <%= f.check_box :public %><br>
+    <%= f.submit "Create Recipe" %>
+  </div>
+<% end %>
