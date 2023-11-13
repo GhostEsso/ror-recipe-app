@@ -1,0 +1,13 @@
+current directory: /home/essohanam/MICROVERSE/Module 5/ror-recipe-app/vendor/bundle/ruby/3.1.0/gems/json-2.6.3/ext/json
+/usr/bin/ruby3.1 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20231113-27946-v9rkjc.rb extconf.rb
+creating Makefile
+
+current directory: /home/essohanam/MICROVERSE/Module 5/ror-recipe-app/vendor/bundle/ruby/3.1.0/gems/json-2.6.3/ext/json
+make DESTDIR\= clean
+
+current directory: /home/essohanam/MICROVERSE/Module 5/ror-recipe-app/vendor/bundle/ruby/3.1.0/gems/json-2.6.3/ext/json
+make DESTDIR\=
+make: rien à faire pour « all ».
+
+current directory: /home/essohanam/MICROVERSE/Module 5/ror-recipe-app/vendor/bundle/ruby/3.1.0/gems/json-2.6.3/ext/json
+make DESTDIR\= install
