@@ -13,3 +13,6 @@
  *= require_tree .
  *= require_self
  */
+ .single_recipe {
+    background-color: rgb(73, 110, 98);
+  }
