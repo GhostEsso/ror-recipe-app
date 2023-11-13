@@ -7,6 +7,7 @@
  */
 
 /* vim: ft=css et sw=2 ts=2 sts=2 */
+
 /* Base Green is: #6C8C22 */
 
 .hide { display: none !important; }
@@ -34,7 +35,6 @@ h4 span,
 h5 span,
 h6 span {
   position: relative;
-
   display: none;
   padding-left: 1em;
   line-height: 0;
@@ -44,7 +44,7 @@ h6 span {
 
 h1 span { top: -1.3em; }
 h2 span { top: -1.2em; }
-h3 span { top: -1.0em; }
+h3 span { top: -1em; }
 h4 span { top: -0.8em; }
 h5 span { top: -0.5em; }
 h6 span { top: -0.5em; }
@@ -70,20 +70,20 @@ h6:target {
 
 :link,
 :visited {
-  color: #6C8C22;
+  color: #6c8c22;
   text-decoration: none;
 }
 
 :link:hover,
 :visited:hover {
-  border-bottom: 1px dotted #6C8C22;
+  border-bottom: 1px dotted #6c8c22;
 }
 
 code,
 pre {
   font-family: "Source Code Pro", Monaco, monospace;
-  background-color: rgba(27,31,35,0.05);
-  padding: 0em 0.2em;
+  background-color: rgba(27, 31, 35, 0.05);
+  padding: 0 0.2em;
   border-radius: 0.2em;
 }
 
@@ -93,7 +93,8 @@ table {
   border-collapse: collapse;
 }
 
-table tr th, table tr td {
+table tr th,
+table tr td {
   padding: 0.2em 0.4em;
   border: 1px solid #ccc;
 }
@@ -122,9 +123,11 @@ table tr:nth-child(even) td {
   border-radius: 4px;
   text-align: left;
 }
+
 #search-field:focus {
   background: #f1edba;
 }
+
 #search-field:-moz-placeholder,
 #search-field::-webkit-input-placeholder {
   font-weight: bold;
@@ -355,7 +358,7 @@ main > h3:first-child,
 main > h4:first-child,
 main > h5:first-child,
 main > h6:first-child {
-  margin-top: 0px;
+  margin-top: 0;
 }
 
 main sup {
@@ -368,7 +371,7 @@ main h1[class] {
   margin-top: 0;
   margin-bottom: 1em;
   font-size: 2em;
-  color: #6C8C22;
+  color: #6c8c22;
 }
 
 main h1 {
@@ -462,6 +465,7 @@ main header h3 {
 .documentation-section-title {
   position: relative;
 }
+
 .documentation-section-title .section-click-top {
   position: absolute;
   top: 6px;
@@ -552,10 +556,12 @@ main .method-heading {
   font-weight: bold;
   color: #333;
 }
+
 main .method-heading :link,
 main .method-heading :visited {
   color: inherit;
 }
+
 main .method-click-advice {
   position: absolute;
   top: 2px;
@@ -567,6 +573,7 @@ main .method-click-advice {
   line-height: 20px;
   background: url(../images/zoom.png) no-repeat right top;
 }
+
 main .method-header:hover .method-click-advice {
   visibility: visible;
 }
@@ -586,6 +593,7 @@ main .aliases {
   font-style: italic;
   cursor: default;
 }
+
 main .method-description ul {
   margin-left: 1.5em;
 }
@@ -594,10 +602,12 @@ main #attribute-method-details .method-detail:hover {
   background-color: transparent;
   cursor: default;
 }
+
 main .attribute-access-type {
   text-transform: uppercase;
   padding: 0 1em;
 }
+
 /* @end */
 
 /* @end */
@@ -613,15 +623,15 @@ pre {
   overflow: auto;
 }
 
-.ruby-constant   { color: #7fffd4; background: transparent; }
-.ruby-keyword    { color: #00ffff; background: transparent; }
-.ruby-ivar       { color: #eedd82; background: transparent; }
-.ruby-operator   { color: #00ffee; background: transparent; }
+.ruby-constant { color: #7fffd4; background: transparent; }
+.ruby-keyword { color: #0ff; background: transparent; }
+.ruby-ivar { color: #eedd82; background: transparent; }
+.ruby-operator { color: #0fe; background: transparent; }
 .ruby-identifier { color: #ffdead; background: transparent; }
-.ruby-node       { color: #ffa07a; background: transparent; }
-.ruby-comment    { color: #dc0000; background: transparent; }
-.ruby-regexp     { color: #ffa07a; background: transparent; }
-.ruby-value      { color: #7fffd4; background: transparent; }
+.ruby-node { color: #ffa07a; background: transparent; }
+.ruby-comment { color: #dc0000; background: transparent; }
+.ruby-regexp { color: #ffa07a; background: transparent; }
+.ruby-value { color: #7fffd4; background: transparent; }
 
 /* @end */
 
@@ -673,4 +683,3 @@ pre {
 }
 
 /* @end */
-
