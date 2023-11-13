@@ -7,9 +7,20 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
   </head>
 
+  <header>
+    <% if current_user %>
+      <%= link_to "Sing out", destroy_user_session_path, 
+      'data-turbo-method': :delete %>
+    <% else %>
+      <%= link_to "Log in", new_user_session_path %>
+    <% end %>
+  </header>
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
