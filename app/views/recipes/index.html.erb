@@ -1,0 +1,10 @@
+<div class="recipe_list">
+  <p>This is a list of recipes</p>
+</div>
+
+<p>If the user is signed in he can see this button:</p>
+<% if (can? :create, Recipe) %>
+  <%= link_to 'Add Recipe', new_recipe_path %>
+<% end %>
+
+<p>If the user is NOT signed in he can't see any buttons</p>
