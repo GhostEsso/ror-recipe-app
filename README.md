@@ -99,7 +99,7 @@ Clone this repository to your desired folder:
 Login to your GitHub account. Clone this repository to your desired folder:
 
 > cd my-folder
-> git clone git@github.com:Zilola-Nazarova/recipe-app.git
+> git clone git@github.com:GhostEsso/ror-recipe-app.git
 
 Setup database:
 > sudo -u postgres createuser --interactive --pwprompt
