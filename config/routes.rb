@@ -11,11 +11,15 @@ Rails.application.routes.draw do
       root :to => 'recipes#index', as: :authenticated_root
     end
     unauthenticated :user do
-      root :to => 'devise/sessions#new', as: :unauthenticated_root
+      root :to => 'recipes#public_recipes', as: :unauthenticated_root
     end
   end
 
-  resources :recipes
+  resources :recipes, only: [:index, :new, :create, :show, :update, :destroy] do
+    resources :recipe_foods
+  end
+
+  resources resources :foods, only: [:index, :new, :create, :destroy]
 
   # Defines the root path route ("/")
   # root "posts#index"
