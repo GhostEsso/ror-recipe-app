@@ -1,25 +1,24 @@
 class FoodsController < ApplicationController
   def index
-    @foodlist = Food.all
+    @foods = Food.all.order(:name)
   end
 
-  def new
-    @food = Food.new
+  def show
+    set_food
   end
 
   def create
     @food = Food.new(food_params)
-    @food.user_id = current_user.id
-
+    @food.user = current_user
     if @food.save
-      redirect_to foods_path, notice: 'Food was successfully created.'
+      redirect_to @food, notice: 'Food was successfully created.'
     else
-      render :new
+      render 'new'
     end
   end
 
   def destroy
-    @food = Food.find(params[:id])
+    set_food
     @food.destroy
     redirect_to foods_path, notice: 'Successfully destroyed foodlist.'
   end
@@ -28,5 +27,9 @@ class FoodsController < ApplicationController
 
   def food_params
     params.require(:food).permit(:name, :measurement_unit, :price, :quantity)
+  end
+  
+  def set_food
+    @food = Food.find(params[:id])
   end
 end

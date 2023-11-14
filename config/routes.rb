@@ -16,11 +16,16 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users do
+    resources :foods, only: [:index, :show, :new, :create, :destroy]
+    resources :recipes, only: [:index, :new, :create, :show, :destroy]
+  end
+
   resources :recipes, only: [:index, :new, :create, :show, :update, :destroy] do
     resources :recipe_foods
   end
 
-  resources :foods, only: [:index, :new, :create, :destroy]
+  resources :foods, only: [:index, :show, :new, :create, :destroy]
 
   # Defines the root path route ("/")
   # root "posts#index"

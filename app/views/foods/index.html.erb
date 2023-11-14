@@ -1,1 +1,20 @@
-# empty file
+<h1>My food ingredients</h1>
+
+<% if (can? :create, Recipe) %>
+  <%= link_to 'Add food', new_food_path %>
+<% end %>
+
+<ul id="food_container">
+  <% @foods.each_with_index do |food, i| %>
+    <li class="single_food">
+    <%= link_to "/food/#{food.id}" do %>
+      <h2><%= food.name %></h2>
+    <% end %>
+    <% if can? :destroy, food %>
+      <%= form_with model: food, url: food_path(food), method: :delete do |f| %>
+        <%= f.submit "REMOVE" %>
+      <% end %>
+    <% end %>
+    </li>
+  <% end %>
+</ul>

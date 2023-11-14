@@ -1,0 +1,5 @@
+<p><%= @food.name %></p>
+<p><%= @food.measurement_unit %></p>
+<p><%= @food.quantity %> <%= @food.measurement_unit %></p>
+<p>$<%= @food.price %></p>
+<%= button_to "Delete", food_path(@food.id), method: :delete%>
