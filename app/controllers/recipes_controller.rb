@@ -1,14 +1,15 @@
 class RecipesController < ApplicationController
   load_and_authorize_resource
+  # before_action :authenticate_user!, except: :public_recipes
 
   def index
-    @user = User.find(current_user.id)
-    @recipes = @user.recipes.order(id: :asc)
+    @recipes = current_user.recipes.order(id: :asc)
     # @recipes = @recipes.paginate(page: params[:page], per_page: 5)
   end
 
   def show
     @recipe = Recipe.find(params[:id])
+    @recipe_foods = RecipeFood.find_by_recipe_id(params[:id])
   end
 
   def new
@@ -30,8 +31,24 @@ class RecipesController < ApplicationController
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy!
-    flash[:success] = 'recipe was deleted successfully!'
+    flash[:success] = 'Recipe deleted successfully!'
     redirect_to recipes_url
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.public
+      @recipe.update!(public: false)
+      flash[:notice] = 'Recipe status changed to private'
+    else
+      @recipe.update!(public: true)
+      flash[:notice] = 'Recipe status changed to public'
+    end
+    redirect_to recipe_path
+  end
+
+  def public_recipes
+    @recipes = Recipe.where(public: true).order(id: :asc)
   end
 
   private
