@@ -18,6 +18,7 @@ class RecipeFoodsController < ApplicationController
       render :new, locals: { recipe_food: @recipe_food }
     end
   end
+
   def destroy
     set_recipe_food
     @recipe_food.destroy
