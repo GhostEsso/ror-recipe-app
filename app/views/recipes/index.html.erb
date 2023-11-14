@@ -1,20 +1,23 @@
+<h1>My Recipes 🍗🍔🥙🍟</h1>
+
 <p>If the user is signed in he can see this button:</p>
 <% if (can? :create, Recipe) %>
   <%= link_to 'Add Recipe', new_recipe_path %>
 <% end %>
-
 <p>If the user is NOT signed in he can't see any buttons</p>
 
 <ul id="recipes_container">
   <% @recipes.each_with_index do |recipe, i| %>
     <li class="single_recipe">
-      <h2><%= recipe.name %></h2>
-      <% if can? :destroy, recipe %>
-        <%= form_with model: recipe, url: recipe_path(recipe), method: :delete do |f| %>
-          <%= f.submit "REMOVE" %>
-        <% end %>
-      <% end %>
-      <h2><%= recipe.description %></h2>
+    <%= link_to "/recipes/#{recipe.id}" do %>
+    <h2><%= recipe.name %></h2>
+  <% end %>
+  <% if can? :destroy, recipe %>
+    <%= form_with model: recipe, url: recipe_path(recipe), method: :delete do |f| %>
+      <%= f.submit "REMOVE" %>
+    <% end %>
+  <% end %>
+  <h2><%= truncate(recipe.description, length: 100, omission: '...') %></h2>
     </li>
   <% end %>
 </ul>
