@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :recipe_foods
   end
 
-  resources resources :foods, only: [:index, :new, :create, :destroy]
+  resources :foods, only: [:index, :new, :create, :destroy]
 
   # Defines the root path route ("/")
   # root "posts#index"
