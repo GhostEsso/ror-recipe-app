@@ -36,7 +36,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @recipe_foods&.each_with_index do |recipe_food, i| %>
+      <% @recipe_foods.each do |recipe_food| %>
         <tr>
           <td><%= recipe_food.food.name %></td>
           <td><%= recipe_food.quantity %></td>
