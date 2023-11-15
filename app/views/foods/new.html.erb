@@ -1,4 +1,4 @@
-<h1>Create a new food ingredient</h1>
+<h1>Create a new food ingredient 🥙</h1>
 
 <% flash.each do |name, msg| -%>
   <%= content_tag :div, msg, class: name %>
@@ -17,5 +17,4 @@
   <%= f.number_field :price, class: "form-control", required: true %><br>
 
   <%= f.submit "Create Food", class: "btn btn-primary mt-2" %>
-
 <% end %>
