@@ -20,8 +20,8 @@
 
 <% if current_user == @recipe.user %>
   <div id="recipe_actions">
-    <%# <%= link_to "Generate shopping list", general_shopping_list_path(@recipe.id) %>
-    <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe.id) %>
+  <%= link_to "Generate Shopping List", shopping_lists_path %>
+    <%= link_to "Add Ingredient", new_recipe_recipe_food_path(@recipe.id) %>
   </div>
 <% end %>
 
@@ -36,8 +36,8 @@
       </tr>
     </thead>
     <tbody>
-      <% @recipe_foods.each do |recipe_food| %>
-        <tr>
+      <% @recipe_foods&.each_with_index do |recipe_food, i| %>
+        <tr class='ingredient'>
           <td><%= recipe_food.food.name %></td>
           <td><%= recipe_food.quantity %></td>
           <td><%= recipe_food.food.price * recipe_food.quantity %></td>
@@ -50,3 +50,7 @@
     </tbody>
   </table>
 </div>
+
+<% if flash[:success].present? %>
+  <p class='flash-notice'><%= flash[:success] %></p>
+<% end %>
