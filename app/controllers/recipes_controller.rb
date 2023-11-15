@@ -52,6 +52,12 @@ class RecipesController < ApplicationController
     @recipes = Recipe.where(public: true).order(id: :asc)
   end
 
+  def shopping_list
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_foods = @recipe.recipe_foods
+    @foods = @recipe_foods.map(&:food)
+  end
+
   private
 
   def recipe_params
