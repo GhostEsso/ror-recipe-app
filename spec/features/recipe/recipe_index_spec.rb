@@ -19,10 +19,13 @@ RSpec.describe 'When I open user index page', type: :feature do
     visit(recipes_path)
   end
 
-  it 'renders page correctly' do
+  it 'has successful status response' do
     expect(page).to have_http_status :ok
   end
 
+  it 'shows the correct heading' do
+    expect(page).to have_content('My Recipes')  end
+    
   it 'shows the names of all recipes' do
     expect(page).to have_content('Greek Salad')
     expect(page).to have_content('Japanese Salad')
