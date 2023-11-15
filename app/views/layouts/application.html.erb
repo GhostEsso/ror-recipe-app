@@ -5,15 +5,19 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= turbo_include_tags %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <header>
+  <%= link_to "Home", user_signed_in? ? authenticated_root_path : unauthenticated_root_path %>
+  <%= link_to "Public recipes", public_recipes_path %>
+  <%= link_to "My recipes", recipes_path %>
+  <%= link_to "My foods", foods_path %>
+  <%= link_to "New recipe", new_recipe_path %>
     <% if current_user %>
-      <%= link_to "Sign out", destroy_user_session_path, 
-      'data-turbo-method': :delete %>
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, 'data-turbo-method': :delete, class:'border p-4'%>
     <% else %>
       <%= link_to "Log in", new_user_session_path %>
     <% end %>

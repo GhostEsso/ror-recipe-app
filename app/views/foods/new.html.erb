@@ -1,9 +1,9 @@
-<h1>Create a new food ingredient</h1>
+<h1>Create a new food ingredient 🥙</h1>
 
 <% flash.each do |name, msg| -%>
   <%= content_tag :div, msg, class: name %>
 <% end -%>
-<%= form_with(model: [current_user, Food.new], local: true) do |f| %>
+<%= form_with(model: [current_user, Food.new], url: foods_path, local: true) do |f| %>
   <div>
     <%= f.label :name %><br>
     <%= f.text_field :name, :required => true %><br>

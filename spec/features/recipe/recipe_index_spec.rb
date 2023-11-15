@@ -27,7 +27,7 @@ RSpec.describe 'When I open user index page', type: :feature do
   it 'shows the correct heading' do
     expect(page).to have_content('My Recipes')
   end
-    
+
   it 'shows the names of all recipes' do
     expect(page).to have_content('Greek Salad')
     expect(page).to have_content('Japanese Salad')
@@ -52,7 +52,7 @@ RSpec.describe 'When I open user index page', type: :feature do
       click_link('Greek Salad')
       expect(page).to have_current_path(recipe_path(@recipe1))
     end
-    
+
     it "redirects me to that recipe's show page" do
       click_link('Japanese Salad')
       expect(page).to have_current_path(recipe_path(@recipe2))

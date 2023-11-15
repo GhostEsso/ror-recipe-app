@@ -1,0 +1,21 @@
+<p>Shopping list</p>
+<div>
+<p>Recipe: <%= @recipe.name %></p>
+<p>Amount of food items to buy: <%= @recipe_foods.count%> </p>
+<p>Total value of food needed: $<%= @foods.inject(0){|sum, food| sum + (food.price*food.quantity).round(2)} %></p>
+</div>
+
+<div>
+  <div>
+    <p>Food</p>
+    <p>Quantity</p>
+    <p>Price</p>
+  </div>
+  <div>
+    <% @foods.each do |food| %>
+      <p><%= food.name %></p>
+      <p><%= food.quantity %> <%= food.measurement_unit %></p>
+      <p><%= (food.price*food.quantity).round(2) %></p>
+    <% end %>
+  </div>
+</div>
