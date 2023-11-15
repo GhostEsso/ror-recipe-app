@@ -1,10 +1,19 @@
 <h1>Edit recipe food</h1>
 
 <%= form_with(url: recipe_recipe_food_path, model: @recipe_food) do |form| %>
-    <%= form.label :quantity %>
-    <%= form.number_field :quantity, min: 1, value: 1, required: true %>
-    <%= form.collection_select :food_id, current_user.food, :id, :name, { include_blank: false } %> 
-    <%= form.submit "Save changes" %>
+    <div class='row align-items-end'>
+        <div class="col">
+            <%= form.label :quantity, class: "form-label" %>
+            <%= form.number_field :quantity, class: "form-control", min: 1, value: 1, required: true %>
+        </div>
+        <div class="col">
+            <%= form.label :food_id, class: "form-label" %>
+            <%= form.collection_select :food_id, current_user.food, :id, :name, { include_blank: false }, class: "form-control" %>
+        </div>
+        <div class="col-2">
+            <%= form.submit "Save changes", class: "btn btn-primary" %>
+        </div>
+    </div>
 <% end %>
 
-<%= link_to "Add new food", new_food_path %>
+<%= link_to "Add new food", new_food_path, class: "btn btn-secondary mt-4" %>

@@ -1,17 +1,16 @@
-<div id="recipe_details">
-  <h1><%= @recipe.name %></h1>
-  <% if current_user == @recipe.user %>
-    <%= button_to recipe_path(@recipe.id), :method => :patch do %>
-      <% if @recipe.public %>
-        Public
-        <i></i>
-      <% else %>
-        Private
-        <i></i>
+<div>
+  <div class='d-flex justify-content-between align-items-center'>
+    <h1><%= @recipe.name %></h1>
+    <% if current_user == @recipe.user %>
+      <%= button_to recipe_path(@recipe.id), :method => :patch, class:'btn btn-secondary' do %>
+        <% if @recipe.public %>
+          make private
+        <% else %>
+          make public
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
-
+  </div>
   <p>Preparation time: <%= @recipe.preparation_time %> <%= "hour".pluralize(@recipe.preparation_time) %></p>
   <p>Cooking time: <%= @recipe.cooking_time %> <%= "hour".pluralize(@recipe.cooking_time) %></p>
   <p><%= @recipe.description %></p>
@@ -19,34 +18,39 @@
 
 
 <% if current_user == @recipe.user %>
-  <div id="recipe_actions">
-    <%# <%= link_to "Generate shopping list", general_shopping_list_path(@recipe.id) %>
-    <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe.id) %>
+  <div class='d-flex justify-content-between align-items-center'>
+    <%= link_to "Generate shopping list", shopping_list_path(@recipe.id), class:'btn btn-secondary' %>
+    <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe.id), class:'btn btn-primary' %>
   </div>
 <% end %>
 
-<div id="recipe_foods">
-  <table>
-    <thead class="border-b">
-      <tr>
-        <th>Food</th>
-        <th>Quantity</th>
-        <th>Value</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @recipe_foods&.each_with_index do |recipe_food, i| %>
-        <tr>
-          <td><%= recipe_food.food.name %></td>
-          <td><%= recipe_food.quantity %></td>
-          <td><%= recipe_food.food.price * recipe_food.quantity %></td>
-          <td>
-            <%= button_to "Delete", recipe_recipe_food_path(@recipe, recipe_food), method: :delete%>
-            <%= link_to "Edit", edit_recipe_recipe_food_path(@recipe, recipe_food) %>
-          </td>
-        </tr>
+<table class="table">
+  <thead class="border-b">
+    <tr>
+      <th class='col'>Food</th>
+      <th class='col'>Quantity</th>
+      <th class='col'>Value</th>
+      <% if can? :destroy, @recipe %>
+        <th class='col'>Actions</th>
       <% end %>
-    </tbody>
-  </table>
-</div>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recipe_foods.each do |recipe_food| %>
+      <tr>
+        <th scope='row' ><%= recipe_food.food.name %></th>
+        <td><%= recipe_food.quantity %></td>
+        <td><%= recipe_food.food.price * recipe_food.quantity %></td>
+        <% if can? :destroy, @recipe %>
+          <td>
+            <div  class='d-flex align-items-center'>
+            <%= button_to "Delete", recipe_recipe_food_path(@recipe, recipe_food), method: :delete, class:'btn btn-danger' %>
+            <%= link_to "Edit", edit_recipe_recipe_food_path(@recipe, recipe_food), class:'btn btn-secondary' %>
+            </div>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
