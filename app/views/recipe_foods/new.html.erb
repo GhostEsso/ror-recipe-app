@@ -1,10 +1,9 @@
-<h1>Add new recipe food</h1>
+<h1>Add New Ingredient</h1>
 
 <%= form_with(url: recipe_recipe_foods_path, model: @recipe_food) do |form| %>
     <%= form.label :quantity %>
     <%= form.number_field :quantity, min: 1, value: 1, required: true, step: 1 %>
-    <%= form.collection_select :food_id, current_user.food, :id, :name, { include_blank: false } %> 
-    <%= form.submit "Add new ingredient" %>
+    <%= form.collection_select :food_id, current_user.foods, :id, :name, { include_blank: false } %>
+    <%= link_to "Add New Food", new_food_path %>
+    <%= form.submit "Add Ingredient" %>
 <% end %>
-
-<%= link_to "Add new food", new_food_path %>
