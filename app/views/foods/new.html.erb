@@ -3,16 +3,18 @@
 <% flash.each do |name, msg| -%>
   <%= content_tag :div, msg, class: name %>
 <% end -%>
-<%= form_with(model: [current_user, Food.new], url: foods_path, local: true) do |f| %>
-  <div>
-    <%= f.label :name %><br>
-    <%= f.text_field :name, :required => true %><br>
-    <%= f.label :measurement_unit %><br>
-    <%= f.text_field :measurement_unit, :required => true%><br>
-    <%= f.label :quantity %><br>
-    <%= f.number_field :quantity %><br>
-    <%= f.label :price %><br>
-    <%= f.number_field :price, :required => true%><br>
-    <%= f.submit "Create Food" %>
-  </div>
+<%= form_with(model: [current_user, Food.new], local: true) do |f| %>
+  <%= f.label :name, class: "form-label" %><br>
+  <%= f.text_field :name, class: "form-control", required: true %><br>
+
+  <%= f.label :measurement_unit, class: "form-label" %><br>
+  <%= f.text_field :measurement_unit, class: "form-control", required: true %><br>
+
+  <%= f.label :quantity, class: "form-label" %><br>
+  <%= f.number_field :quantity, class: "form-control" %><br>
+
+  <%= f.label :price, class: "form-label" %><br>
+  <%= f.number_field :price, class: "form-control", required: true %><br>
+
+  <%= f.submit "Create Food", class: "btn btn-primary mt-2" %>
 <% end %>

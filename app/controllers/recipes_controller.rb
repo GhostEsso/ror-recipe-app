@@ -8,7 +8,6 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @recipe_foods = @recipe.recipe_foods
-    # @recipe_foods = RecipeFood.find_by_recipe_id(params[:id])
   end
 
   def new
@@ -47,7 +46,7 @@ class RecipesController < ApplicationController
   end
 
   def public_recipes
-    @recipes = Recipe.where(public: true).order(id: :desc)
+    @recipes = Recipe.includes([:user]).includes([:recipe_foods]).where(public: true).order(id: :asc)
   end
 
   def shopping_list

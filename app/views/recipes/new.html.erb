@@ -4,17 +4,22 @@
   <%= content_tag :div, msg, class: name %>
 <% end -%>
 <%= form_with model: [@recipe], data: { turbo: false }, local: true do |f| %>
-  <div>
+  <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name, :required => true %><br>
+    <%= f.text_field :name, class: "form-control", required: true %><br>
+    
     <%= f.label :preparation_time %><br>
-    <%= f.number_field :preparation_time, :required => true, step: 0.1 %><br>
+    <%= f.number_field :preparation_time, class: "form-control", required: true, step: 0.1 %><br>
+    
     <%= f.label :cooking_time %><br>
-    <%= f.number_field :cooking_time, :required => true, step: 0.1 %><br>
+    <%= f.number_field :cooking_time, class: "form-control", required: true, step: 0.1 %><br>
+    
     <%= f.label :description %><br>
-    <%= f.text_area :description %><br>
+    <%= f.text_area :description, class: "form-control" %><br>
+    
     <%= f.label :public %><br>
-    <%= f.check_box :public %><br>
-    <%= f.submit "Create Recipe" %>
+    <%= f.check_box :public, class: "form-check-input" %><br>
+
+    <%= f.submit "Create Recipe", class: "btn btn-primary mt-4" %>
   </div>
 <% end %>
