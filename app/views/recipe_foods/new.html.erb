@@ -2,7 +2,7 @@
 
 <%= form_with(url: recipe_recipe_foods_path, model: @recipe_food) do |form| %>
     <%= form.label :quantity %>
-    <%= form.number_field :quantity, min: 1, value: 1, required: true %>
+    <%= form.number_field :quantity, min: 1, value: 1, required: true, step: 1 %>
     <%= form.collection_select :food_id, current_user.food, :id, :name, { include_blank: false } %> 
     <%= form.submit "Add new ingredient" %>
 <% end %>
