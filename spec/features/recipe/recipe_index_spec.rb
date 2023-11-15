@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'When I open user index page', type: :feature do
   before(:each) do
+    User.delete_all
     @user = User.create(name: 'Tom', email: 'tom@example.com', password: 'topsecret')
     @user.confirm
     sleep(1)
@@ -24,7 +25,8 @@ RSpec.describe 'When I open user index page', type: :feature do
   end
 
   it 'shows the correct heading' do
-    expect(page).to have_content('My Recipes')  end
+    expect(page).to have_content('My Recipes')
+  end
     
   it 'shows the names of all recipes' do
     expect(page).to have_content('Greek Salad')
@@ -50,6 +52,7 @@ RSpec.describe 'When I open user index page', type: :feature do
       click_link('Greek Salad')
       expect(page).to have_current_path(recipe_path(@recipe1))
     end
+    
     it "redirects me to that recipe's show page" do
       click_link('Japanese Salad')
       expect(page).to have_current_path(recipe_path(@recipe2))

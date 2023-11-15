@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'When I open user show page', type: :feature do
   before(:each) do
+    User.delete_all
     @user = User.create(name: 'Tom', email: 'tom@example.com', password: 'topsecret')
     @user.confirm
     sleep(1)
@@ -17,7 +18,7 @@ RSpec.describe 'When I open user show page', type: :feature do
     visit(recipe_path(@recipe))
   end
 
-  it 'renders page correctly' do
+  it 'has successful status response' do
     expect(page).to have_http_status :ok
   end
 
@@ -39,6 +40,30 @@ RSpec.describe 'When I open user show page', type: :feature do
 
   it 'shows the Private button 2 times' do
     expect(page).to have_button('Private')
+  end
+
+  context 'shows correct links' do
+    it 'to Generate Shopping List' do
+      expect(page).to have_link('Generate Shopping List', href: shopping_lists_path)
+    end
+
+    it 'to Add Ingredient' do
+      expect(page).to have_link('Add Ingredient', href: new_recipe_recipe_food_path(@recipe))
+    end
+  end
+
+  context 'When I click on Add Ingredient' do
+    it 'redirects me to the form that adds new recipe_foods' do
+      click_link('Add Ingredient')
+      expect(page).to have_current_path(new_recipe_recipe_food_path(@recipe))
+    end
+  end
+
+  context 'When I click on Generate Shopping List' do
+    it 'redirects me to the shopping list path' do
+      click_link('Generate Shopping List')
+      expect(page).to have_current_path(shopping_lists_path)
+    end
   end
 
   context 'When I click on a Private button' do
