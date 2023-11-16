@@ -1,8 +1,8 @@
 <h1>Shopping list</h1>
 <h3>Recipe: <%= @recipe.name %></h3>
 <div class='d-flex justify-content-between align-items-center'>
-  <p>Amount of food items to buy: <%= @recipe_foods.count%> </p>
-  <p>Total value of food needed: $<%= @foods.inject(0){|sum, food| sum + (food.price*food.quantity).round(2)} %></p>
+  <p>Amount of food items to buy: <%= @recipe_data[:total_food_items] %> </p>
+  <p>Total value of food needed: $<%= @recipe_data[:total_price] %></p>
 </div>
 
 <table class="table">
@@ -14,11 +14,11 @@
     </tr>
   </thead>
   <tbody>
-    <% @foods.each do |food| %>
+    <% @recipe.recipe_foods.each do |recipe_food| %>
       <tr>
-        <th scope='row' ><%= food.name %></th>
-        <td><%= food.quantity %> <%= food.measurement_unit %></td>
-        <td><%= (food.price*food.quantity).round(2) %></td>
+        <th scope='row' ><%= recipe_food.food.name %></th>
+        <td><%= recipe_food.food.quantity %> <%= recipe_food.food.measurement_unit %></td>
+        <td><%= (recipe_food.food.price*recipe_food.food.quantity).round(2) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -7,7 +7,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    @recipe_foods = @recipe.recipe_foods
+    @recipe_foods = @recipe.recipe_foods.includes(:food)
   end
 
   def new
@@ -46,13 +46,23 @@ class RecipesController < ApplicationController
   end
 
   def public_recipes
-    @recipes = Recipe.includes([:user]).includes([:recipe_foods]).where(public: true).order(id: :asc)
+    @recipes = Recipe.includes([:user,:recipe_foods => [:food]]).where(public: true).order(id: :asc)
+    @recipes_with_food_info = @recipes.map do |recipe|
+      {
+        recipe: recipe,
+        total_food_items: recipe.recipe_foods.size,
+        total_price: recipe.recipe_foods.sum { |recipe_food| recipe_food.food.price * recipe_food.quantity }
+      }
+    end
   end
 
   def shopping_list
-    @recipe = Recipe.find(params[:recipe_id])
-    @recipe_foods = @recipe.recipe_foods
-    @foods = @recipe_foods.map(&:food)
+    @recipe = Recipe.includes([:recipe_foods =>[:food]]).find(params[:recipe_id])
+    @recipe_data = {
+        total_food_items: @recipe.recipe_foods.size,
+        total_price: @recipe.recipe_foods.sum { |recipe_food| recipe_food.food.price * recipe_food.quantity }
+      }
+    # @recipe_foods = @recipe.recipe_foods.includes(:food)
   end
 
   private
