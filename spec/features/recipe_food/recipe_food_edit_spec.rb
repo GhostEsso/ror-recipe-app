@@ -35,7 +35,7 @@ RSpec.describe 'When I open recipe edit page', type: :feature do
   end
 
   it 'shows recipe food quantity' do
-    expect(page).to have_field("recipe_food[quantity]", with: 3 , type: "number")
+    expect(page).to have_field('recipe_food[quantity]', with: 3, type: 'number')
   end
 
   it 'shows food name in dropbox' do
@@ -57,7 +57,7 @@ RSpec.describe 'When I open recipe edit page', type: :feature do
       fill_in 'recipe_food[quantity]', with: 7
       click_button('Save changes')
       visit(edit_recipe_recipe_food_path(@recipe, @recipe_food1))
-      expect(page).to have_field("recipe_food[quantity]", with: 7 , type: "number")
+      expect(page).to have_field('recipe_food[quantity]', with: 7, type: 'number')
     end
   end
 
@@ -65,6 +65,6 @@ RSpec.describe 'When I open recipe edit page', type: :feature do
     select 'Pear', from: 'recipe_food[food_id]'
     click_button('Save changes')
     visit(edit_recipe_recipe_food_path(@recipe, @recipe_food1))
-    expect(page).to have_field("recipe_food[food_id]", with: @food2.id)
+    expect(page).to have_field('recipe_food[food_id]', with: @food2.id)
   end
 end

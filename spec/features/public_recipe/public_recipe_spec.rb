@@ -21,7 +21,7 @@ RSpec.describe 'When I open public recipe page', type: :feature do
     @recipe_food1 = RecipeFood.create(recipe: @recipe2, food: @food1, quantity: 3)
     @recipe_food2 = RecipeFood.create(recipe: @recipe2, food: @food2, quantity: 7)
   end
-  
+
   it 'renders page correctly' do
     visit(public_recipes_path)
     expect(page).to have_http_status :ok
@@ -68,8 +68,8 @@ RSpec.describe 'When I open public recipe page', type: :feature do
     end
 
     it "doesn't show Generate Shopping List link" do
-    visit(public_recipes_path)
-    click_link('Greek Salad')
+      visit(public_recipes_path)
+      click_link('Greek Salad')
       expect(page).to_not have_link('Generate shopping list', href: shopping_list_path(@recipe2))
     end
   end

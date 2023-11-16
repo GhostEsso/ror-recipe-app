@@ -15,14 +15,14 @@ RSpec.describe 'When I open shopping list page', type: :feature do
     @food1 = Food.create(user: @user, name: 'Apple', measurement_unit: 'kg', price: 10, quantity: 4)
     @food2 = Food.create(user: @user, name: 'Pear', measurement_unit: 'kg', price: 12, quantity: 5)
     @recipe = Recipe.create(user: @user, name: 'Japanese Salad', description: 'I love this recipe very much! ' * 5,
-                             preparation_time: 1, cooking_time: 2, public: true)
+                            preparation_time: 1, cooking_time: 2, public: true)
 
     @recipe_food1 = RecipeFood.create(recipe: @recipe, food: @food1, quantity: 3)
     @recipe_food2 = RecipeFood.create(recipe: @recipe, food: @food2, quantity: 7)
     sleep(1)
     visit(shopping_list_path(@recipe))
   end
-  
+
   it 'renders page correctly' do
     expect(page).to have_http_status :ok
   end

@@ -13,7 +13,7 @@ RSpec.describe 'When I open food new page', type: :feature do
     sleep(1)
 
     @recipe = Recipe.create(user: @user, name: 'Japanese Salad', description: 'I love this recipe very much! ' * 5,
-                             preparation_time: 1, cooking_time: 2, public: true)
+                            preparation_time: 1, cooking_time: 2, public: true)
 
     sleep(1)
     visit(new_food_path)
