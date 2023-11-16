@@ -1,6 +1,6 @@
 <h1>Shopping list</h1>
 <h3>Recipe: <%= @recipe.name %></h3>
-<div class='d-flex justify-content-between align-items-center'>
+<div id='recipe-info' class='d-flex justify-content-between align-items-center'>
   <p>Amount of food items to buy: <%= @recipe_data[:total_food_items] %> </p>
   <p>Total value of food needed: $<%= @recipe_data[:total_price] %></p>
 </div>
@@ -16,9 +16,9 @@
   <tbody>
     <% @recipe.recipe_foods.each do |recipe_food| %>
       <tr>
-        <th scope='row' ><%= recipe_food.food.name %></th>
-        <td><%= recipe_food.food.quantity %> <%= recipe_food.food.measurement_unit %></td>
-        <td><%= (recipe_food.food.price*recipe_food.food.quantity).round(2) %></td>
+        <th class='food-name' scope='row' ><%= recipe_food.food.name %></th>
+        <td class='food-quantity' ><%= recipe_food.food.quantity %> <%= recipe_food.food.measurement_unit %></td>
+        <td class='food-price' >$<%= (recipe_food.food.price*recipe_food.food.quantity).round(2) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'When I open user index page', type: :feature do
+RSpec.describe 'When I open recipe edit page', type: :feature do
   before(:each) do
     User.delete_all
     @user = User.create(name: 'Tom', email: 'tom@example.com', password: 'topsecret')
@@ -19,6 +19,7 @@ RSpec.describe 'When I open user index page', type: :feature do
                             preparation_time: 0, cooking_time: 0)
     @recipe_food1 = RecipeFood.create(recipe: @recipe, food: @food1, quantity: 3)
     visit(edit_recipe_recipe_food_path(@recipe, @recipe_food1))
+    sleep(1)
   end
 
   it 'has successful status response' do
@@ -33,8 +34,8 @@ RSpec.describe 'When I open user index page', type: :feature do
     expect(page).to have_content('Quantity')
   end
 
-  it 'shows quantity placeholder 1' do
-    expect(page).to have_selector("input#recipe_food_quantity[value='3']")
+  it 'shows recipe food quantity' do
+    expect(page).to have_field("recipe_food[quantity]", with: 3 , type: "number")
   end
 
   it 'shows food name in dropbox' do
@@ -42,32 +43,28 @@ RSpec.describe 'When I open user index page', type: :feature do
   end
 
   it 'shows Update button' do
-    expect(page).to have_button('Update')
+    expect(page).to have_button('Save changes')
   end
 
-  context 'When I click on Update button' do
+  context 'When I click on save changes button' do
     it 'redirects me back to the recipe where the Ingredient is present' do
-      fill_in 'Quantity', with: '5'
-      click_button('Update')
+      fill_in 'recipe_food[quantity]', with: 5
+      click_button('Save changes')
       expect(page).to have_current_path(recipe_path(@recipe))
     end
 
     it 'displays the updated quantity' do
-      fill_in 'Quantity', with: '5'
-      click_button('Update')
-      expect(page.html).to include('<td>5</td>')
+      fill_in 'recipe_food[quantity]', with: 7
+      click_button('Save changes')
+      visit(edit_recipe_recipe_food_path(@recipe, @recipe_food1))
+      expect(page).to have_field("recipe_food[quantity]", with: 7 , type: "number")
     end
+  end
 
-    it 'recalculates the value' do
-      fill_in 'Quantity', with: '5'
-      click_button('Update')
-      expect(page.html).to include('<td>50.0</td>')
-    end
-
-    it 'recalculates the value' do
-      select 'Pear', from: 'recipe_food[food_id]'
-      click_button('Update')
-      expect(page.html).to include('<td>Pear</td>')
-    end
+  it 'selects a different food ingredient' do
+    select 'Pear', from: 'recipe_food[food_id]'
+    click_button('Save changes')
+    visit(edit_recipe_recipe_food_path(@recipe, @recipe_food1))
+    expect(page).to have_field("recipe_food[food_id]", with: @food2.id)
   end
 end

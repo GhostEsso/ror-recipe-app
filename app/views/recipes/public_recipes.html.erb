@@ -18,7 +18,7 @@
             </div>
             <div class='col d-flex justify-content-end align-items-center'>
               <% if can? :destroy, data[:recipe] %>
-                <%= form_with model: recipe, url: recipe_path(data[:recipe]), method: :delete do |f| %>
+                <%= form_with model: @recipes, url: recipe_path(data[:recipe]), method: :delete do |f| %>
                   <%= f.submit "Remove", class: 'btn btn-danger' %>
                 <% end %>
               <% end %>

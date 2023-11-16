@@ -39,39 +39,39 @@ RSpec.describe 'When I open user show page', type: :feature do
   end
 
   it 'shows the Private button 2 times' do
-    expect(page).to have_button('Private')
+    expect(page).to have_button('make public')
   end
 
   context 'shows correct links' do
     it 'to Generate Shopping List' do
-      expect(page).to have_link('Generate Shopping List', href: shopping_lists_path)
+      expect(page).to have_link('Generate shopping list', href: shopping_list_path(@recipe))
     end
 
     it 'to Add Ingredient' do
-      expect(page).to have_link('Add Ingredient', href: new_recipe_recipe_food_path(@recipe))
+      expect(page).to have_link('Add ingredient', href: new_recipe_recipe_food_path(@recipe))
     end
   end
 
   context 'When I click on Add Ingredient' do
     it 'redirects me to the form that adds new recipe_foods' do
-      click_link('Add Ingredient')
+      click_link('Add ingredient')
       expect(page).to have_current_path(new_recipe_recipe_food_path(@recipe))
     end
   end
 
   context 'When I click on Generate Shopping List' do
     it 'redirects me to the shopping list path' do
-      click_link('Generate Shopping List')
-      expect(page).to have_current_path(shopping_lists_path)
+      click_link('Generate shopping list')
+      expect(page).to have_current_path(shopping_list_path(@recipe))
     end
   end
 
   context 'When I click on a Private button' do
     it 'toggles it and change the text to Prublic' do
-      click_button('Private')
-      expect(page).to have_button('Public')
-      click_button('Public')
-      expect(page).to have_button('Private')
+      click_button('make public')
+      expect(page).to have_button('make private')
+      click_button('make private')
+      expect(page).to have_button('make public')
     end
   end
 end

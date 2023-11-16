@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'When I open user index page', type: :feature do
+RSpec.describe 'When recipe foods are modified  page', type: :feature do
   before(:each) do
     User.delete_all
     @user = User.create(name: 'Tom', email: 'tom@example.com', password: 'topsecret')
@@ -51,7 +51,7 @@ RSpec.describe 'When I open user index page', type: :feature do
 
   context 'When I click on Edit button' do
     it 'redirects me to form that adds Ingredient' do
-      within first('.ingredient') do
+      within first('.recipe_food') do
         click_link('Edit')
       end
       expect(page).to have_current_path(edit_recipe_recipe_food_path(@recipe, @recipe_food1))
@@ -60,7 +60,7 @@ RSpec.describe 'When I open user index page', type: :feature do
 
   context 'When I click on Delete button' do
     it 'removes this ingredient' do
-      within first('.ingredient') do
+      within first('.recipe_food') do
         click_button('Delete')
       end
       expect(page).to_not have_content('Apple')

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'When I open user index page', type: :feature do
+RSpec.describe 'When I open recipe new page', type: :feature do
   before(:each) do
     User.delete_all
     @user = User.create(name: 'Tom', email: 'tom@example.com', password: 'topsecret')
@@ -41,16 +41,16 @@ RSpec.describe 'When I open user index page', type: :feature do
   end
 
   it 'has correct Add New Food link' do
-    expect(page).to have_link('Add New Food', href: new_food_path)
+    expect(page).to have_link('Add new food', href: new_food_path)
   end
 
   it 'shows Add Ingredient button' do
-    expect(page).to have_button('Add Ingredient')
+    expect(page).to have_button('Add new ingredient')
   end
 
   context 'When I click on Add Ingredient button' do
     it 'redirects me back to the recipe where the Ingredient is present' do
-      click_button('Add Ingredient')
+      click_button('Add new ingredient')
       expect(page).to have_current_path(recipe_path(@recipe))
       expect(page).to have_content('Apple')
     end
@@ -58,7 +58,7 @@ RSpec.describe 'When I open user index page', type: :feature do
 
   context 'When I click on Add New Food link' do
     it 'redirects me to form that adds Ingredient' do
-      click_link('Add New Food')
+      click_link('Add new food')
       expect(page).to have_current_path(new_food_path)
     end
   end

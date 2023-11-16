@@ -40,7 +40,7 @@ RSpec.describe 'When I open user index page', type: :feature do
   end
 
   it 'shows the REMOVE button 2 times' do
-    expect(page).to have_button('REMOVE', count: 2)
+    expect(page).to have_button('Remove', count: 2)
   end
 
   it 'shows the Add Recipe button' do
@@ -68,8 +68,8 @@ RSpec.describe 'When I open user index page', type: :feature do
 
   context 'When I click on REMOVE button' do
     it 'removes this item' do
-      within first('.single_recipe') do
-        click_button('REMOVE')
+      within first('.list-group-item') do
+        click_button('Remove')
       end
       expect(page).to_not have_content('Greek Salad')
     end
