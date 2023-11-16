@@ -4,23 +4,24 @@
 
 # 📗 Table of Contents
 
-- [📖 About the Project](#about-project)
-  - [🛠 Built With](#built-with)
-    - [Tech Stack](#tech-stack)
-    - [Key Features](#key-features)
-- [💻 Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Setup](#setup)
-  - [Install](#install)
-  - [Usage](#usage)
-  - [Run tests](#run-tests)
-- [👥 Authors](#authors)
-- [🔭 Future Features](#future-features)
-- [🤝 Contributing](#contributing)
-- [⭐️ Show your support](#support)
-- [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ (OPTIONAL)](#faq)
-- [📝 License](#license)
+- [� Table of Contents](#-table-of-contents)
+- [📖 Recipe App ](#-recipe-app-)
+  - [🛠 Built With ](#-built-with-)
+    - [Tech Stack ](#tech-stack-)
+    - [Key Features ](#key-features-)
+  - [💻 Getting Started ](#-getting-started-)
+    - [Prerequisites](#prerequisites)
+    - [Setup](#setup)
+    - [Install](#install)
+    - [Usage](#usage)
+    - [Run tests](#run-tests)
+  - [👥 Authors ](#-authors-)
+  - [🔭 Future Features ](#-future-features-)
+  - [🤝 Contributing ](#-contributing-)
+  - [⭐️ Show your support ](#️-show-your-support-)
+  - [🙏 Acknowledgments ](#-acknowledgments-)
+  - [❓ FAQ (OPTIONAL) ](#-faq-optional-)
+  - [📝 License ](#-license-)
 
 
 # 📖 Recipe App <a name="about-project"></a>
@@ -65,13 +66,6 @@ The **Recipe app** keeps track of all your recipes, ingredients, and inventory. 
 - **add/edit/delete ingredients**
 - **make a recipe private/public**
 - **generate shopping list**
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-## 🚀 Live Demo <a name="live-demo"></a>
-
-- The Live Demo will be added after completing next projects for this app.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -151,8 +145,8 @@ Open [http://localhost:1080](http://localhost:1080) to view it in your browser.
 👤 **Javier Hernandez**
 
 - GitHub: [@wickathou](https://github.com/wickathou)
-- LinkedIn: [@javierjhm] ()
-- Portfolio: [@End Design Co.]
+- LinkedIn: [@javierjhm](https://www.linkedin.com/in/javierjhm/)
+- Portfolio: [@End Design Co.](https://enddesign.co/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
