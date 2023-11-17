@@ -23,7 +23,7 @@ development:
   <<: *default
   database: ror_recipe_app_development
   username: postgres
-  password: psql$18192995
+  password: 08121992@
   host: localhost
   port: 5432
 
@@ -61,7 +61,7 @@ test:
   <<: *default
   database: ror_recipe_app_test
   username: postgres
-  password: psql$18192995
+  password: 08121992@
   host: localhost
   port: 5432
 
