@@ -1,0 +1,19 @@
+<h1>Add New Ingredient</h1>
+
+<%= form_with(url: recipe_recipe_foods_path, model: @recipe_food, class: "form container") do |form| %>
+    <div class='row align-items-end'>
+        <div class="col">
+            <%= form.label :quantity, class: "form-label" %>
+            <%= form.number_field :quantity, class: "form-control", min: 1, value: 1, required: true %>
+        </div>
+        <div class="col">
+            <%= form.label :food_id, class: "form-label" %>
+            <%= form.collection_select :food_id, current_user.foods, :id, :name, { include_blank: false }, class: "form-control" %>
+        </div>
+        <div class="col-2">
+            <%= form.submit "Add new ingredient", class: "btn btn-primary" %>
+        </div>
+    </div>
+<% end %>
+
+<%= link_to "Add new food", new_food_path, class: 'btn btn-secondary mt-4' %>

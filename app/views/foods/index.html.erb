@@ -1,0 +1,44 @@
+<h1>My food ingredients</h1>
+
+<% if (can? :create, Recipe) %>
+  <%= link_to 'Add food', new_food_path, class:'btn btn-primary' %>
+<% end %>
+
+<ul class= 'my-4 container'>
+  <li class="row align-items-center bg-body-tertiary">
+    <div class='col'>
+      <p>Name</p>
+    </div>
+    <div class='col'>
+      <p>Measurement unit</p>
+    </div>
+    <div class='col'>
+      <p>Price</p>
+    </div>
+    <div class='col'>
+      <p>Action</p>
+    </div>
+  </li>
+  <% @foods.each_with_index do |food, i| %>
+      <li class="row align-items-center <%= i.even? ? '' : 'bg-body-secondary' %>">
+        <div class='col'>
+        <%= link_to user_food_path(current_user, food), class:'text-decoration-none' do %>
+          <h5><%= food.name %></h5>
+        <% end %>
+        </div>
+        <div class='col'>
+          <p><%= food.measurement_unit %></p>
+        </div>
+        <div class='col'>
+          <p><%= food.price %></p>
+        </div>
+        <div class='col'>
+          <% if can? :destroy, food %>
+            <%= form_with model: food, url: food_path(food), method: :delete do |f| %>
+              <%= f.submit "Remove", class: 'btn btn-danger' %>
+            <% end %>
+          <% end %>
+        </div>
+      </li>
+  <% end %>
+</ul>

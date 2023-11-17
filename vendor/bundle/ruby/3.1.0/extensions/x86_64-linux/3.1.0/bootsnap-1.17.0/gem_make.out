@@ -1,0 +1,15 @@
+current directory: /home/essohanam/MICROVERSE/Module 5/ror-recipe-app/vendor/bundle/ruby/3.1.0/gems/bootsnap-1.17.0/ext/bootsnap
+/usr/bin/ruby3.1 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20231113-25941-kxuxf3.rb extconf.rb
+creating Makefile
+
+current directory: /home/essohanam/MICROVERSE/Module 5/ror-recipe-app/vendor/bundle/ruby/3.1.0/gems/bootsnap-1.17.0/ext/bootsnap
+make DESTDIR\= clean
+
+current directory: /home/essohanam/MICROVERSE/Module 5/ror-recipe-app/vendor/bundle/ruby/3.1.0/gems/bootsnap-1.17.0/ext/bootsnap
+make DESTDIR\=
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.so
+
+current directory: /home/essohanam/MICROVERSE/Module 5/ror-recipe-app/vendor/bundle/ruby/3.1.0/gems/bootsnap-1.17.0/ext/bootsnap
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20231113-25941-qp4ao4/bootsnap

@@ -1,0 +1,27 @@
+<h1>My Recipes 🍗🍔🥙🍟</h1>
+
+<% if (can? :create, Recipe) %>
+  <%= link_to 'Add Recipe', new_recipe_path, class:'btn btn-primary' %>
+<% end %>
+
+<ul class='list-group my-4'>
+  <% @recipes.each do |recipe| %>
+    <li class="list-group-item list-group-item-action container">
+      <div class='row align-items-center'>
+        <div class='col'>
+          <%= link_to recipe_path(recipe), class:'text-decoration-none' do %>
+            <h2><%= recipe.name %></h2>
+          <% end %>
+          <% if can? :destroy, recipe %>
+            <%= form_with model: recipe, url: recipe_path(recipe), method: :delete do |f| %>
+              <%= f.submit "Remove", class: 'btn btn-danger'  %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class='col'>
+        <p><%= truncate(recipe.description, length: 100, omission: '...') %></p>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>

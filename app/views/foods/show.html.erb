@@ -1,0 +1,6 @@
+<p class="mb-2"><strong>Name:</strong> <%= @food.name %></p>
+<p class="mb-2"><strong>Measurement Unit:</strong> <%= @food.measurement_unit %></p>
+<p class="mb-2"><strong>Quantity:</strong> <%= @food.quantity %> <%= @food.measurement_unit %></p>
+<p class="mb-2"><strong>Price:</strong> $<%= @food.price %></p>
+
+<%= button_to "Delete", food_path(@food.id), method: :delete, class: "btn btn-danger" %>

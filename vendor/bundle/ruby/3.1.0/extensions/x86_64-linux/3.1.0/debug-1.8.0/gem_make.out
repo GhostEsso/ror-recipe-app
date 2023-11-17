@@ -1,0 +1,16 @@
+current directory: /home/essohanam/MICROVERSE/Module 5/ror-recipe-app/vendor/bundle/ruby/3.1.0/gems/debug-1.8.0/ext/debug
+/usr/bin/ruby3.1 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20231113-25941-daj5e8.rb extconf.rb
+creating Makefile
+
+current directory: /home/essohanam/MICROVERSE/Module 5/ror-recipe-app/vendor/bundle/ruby/3.1.0/gems/debug-1.8.0/ext/debug
+make DESTDIR\= clean
+
+current directory: /home/essohanam/MICROVERSE/Module 5/ror-recipe-app/vendor/bundle/ruby/3.1.0/gems/debug-1.8.0/ext/debug
+make DESTDIR\=
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: /home/essohanam/MICROVERSE/Module 5/ror-recipe-app/vendor/bundle/ruby/3.1.0/gems/debug-1.8.0/ext/debug
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20231113-25941-wyxinb/debug
