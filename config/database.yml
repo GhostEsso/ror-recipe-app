@@ -87,6 +87,4 @@ test:
 #
 production:
   <<: *default
-  database: ror_recipe_app_production
-  username: postgres
-  password: <%= ENV["DATABASE_URL"] %>
+  url: <%= ENV['DATABASE_URL'] %>

@@ -1,18 +1,18 @@
 databases:
-  - name: ror-recipe-app
-    databaseName: ror_recipe_app_production
-    user: postgres
+  - name: postgres
+    databaseName: postgres_2bkk
+    user: postgres_2bkk_user
 
 services:
   - type: web
-    name: ror-recipe-app
+    name: Recipe App
     runtime: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: ror_recipe_app_production
+          name: postgres_2bkk
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
