@@ -1,7 +1,7 @@
 databases:
   - name: ror-recipe-app
     databaseName: ror_recipe_app_production
-    user: ror-recipe-app
+    user: postgres
 
 services:
   - type: web
