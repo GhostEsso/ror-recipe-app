@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'render/index'
   devise_for :users
   get '/public_recipes', to: 'recipes#public_recipes', as: 'public_recipes'
   get '/recipes/:recipe_id/shopping_list', to: 'recipes#shopping_list', as: 'shopping_list'
@@ -21,4 +22,5 @@ Rails.application.routes.draw do
   end
 
   resources :foods, only: [:index, :new, :create, :destroy]
+  root 'render#index'
 end

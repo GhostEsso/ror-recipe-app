@@ -89,4 +89,4 @@ production:
   <<: *default
   database: ror_recipe_app_production
   username: ror_recipe_app
-  password: <%= ENV["ROR_RECIPE_APP_DATABASE_PASSWORD"] %>
+  password: <%= ENV["DATABASE_URL"] %>
